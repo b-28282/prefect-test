@@ -12,4 +12,11 @@ def get_repo_info():
 
 
 if __name__ == "__main__":
-    get_repo_info()
+    flow.from_source(
+        source="https://github.com/discdiver/demos.git",
+        entrypoint="my_workflow.py:get_repo_info",
+    ).deploy(
+        name="my-first-deployment",
+        work_pool_name="my-managed-pool",
+        cron="0 1 * * *",
+    )
