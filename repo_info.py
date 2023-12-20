@@ -12,11 +12,12 @@ def get_repo_info(repo_name: str = "PrefectHQ/prefect"):
     print(f"Stars 🌠 : {repo['stargazers_count']}")
     print(f"Forks 🍴 : {repo['forks_count']}")
 
+
 if __name__ == "__main__":
     get_repo_info.from_source(
-        source="https://github.com/discdiver/demos.git", 
-        entrypoint="repo_info.py:get_repo_info")
-    .deploy(
-        name="my-first-deployment", 
-        work_pool_name="my-managed-pool", 
+        source="https://github.com/discdiver/demos.git",
+        entrypoint="repo_info.py:get_repo_info",
+    ).deploy(
+        name="my-first-deployment",
+        work_pool_name="my-managed-pool",
     )
