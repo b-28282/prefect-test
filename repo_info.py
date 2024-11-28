@@ -13,7 +13,7 @@ def get_repo_info():
 
 if __name__ == "__main__":
     flow.from_source(
-        source="https://github.com/discdiver/demo.git",
+        source="https://github.com/prefecthq/demos.git",
         entrypoint="my_workflow.py:get_repo_info",
     ).deploy(
         name="my-first-deployment",
