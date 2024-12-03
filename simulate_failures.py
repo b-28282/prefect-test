@@ -53,7 +53,7 @@ if __name__ == "__main__":
     deployment_id = data_pipeline.deploy(
         name=args.name,
         work_pool_name="default-work-pool",
-        image="prefecthq/prefect:3-python3.9",
+        image="prefecthq/prefect:3-latest",
         push=False,
         tags=args.tags.split(',')
     )
