@@ -1,8 +1,8 @@
-# from pathlib import Path
+from pathlib import Path
 from prefect import flow#, task
-# from prefect_aws import S3Bucket
-# from datetime import datetime
-# from prefect.artifacts import create_markdown_artifact
+from prefect_aws import S3Bucket
+from datetime import datetime
+from prefect.artifacts import create_markdown_artifact
 
 # @task(log_prints=True)
 # def train_model(path: Path) -> object:
