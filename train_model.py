@@ -58,4 +58,5 @@ if __name__ == "__main__":
     ).deploy(
         name="webhook-test",
         work_pool_name="my-managed-pool",
+        cron="0 1 * * *",
     )
