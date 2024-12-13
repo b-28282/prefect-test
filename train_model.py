@@ -44,7 +44,8 @@ def fetch_updated_data(path: Path):
         raise Exception(f"Failed to fetch {path} from S3: {e}")
 
 @flow
-def update_model(path: Path):
+def update_model():
+    path = Path("test.txt")
     fetch_updated_data(path)
     results = train_model(path)
     save_results(results)
