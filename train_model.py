@@ -1,12 +1,12 @@
 from pathlib import Path
 from prefect import flow, task
 from prefect_aws import S3Bucket
-from typing import Optional
 from datetime import datetime
 from prefect.artifacts import create_markdown_artifact
 
-@task
+@task(log_prints=True)
 def train_model(path: Path) -> object:
+    print("Loading downloaded file…")
     with open(path, 'r') as file:
         contents = file.read()
     
@@ -17,8 +17,9 @@ def train_model(path: Path) -> object:
     
     return results
 
-@task
+@task(log_prints=True)
 def save_results(results: object):
+    print("Saving results as artifact…")
     markdown_content = f"""
 ## Model Training Results
 
@@ -36,12 +37,13 @@ def save_results(results: object):
 def fetch_updated_data(path: Path):
     s3_bucket = S3Bucket.load("s3-bucket-block")
     try:
+        print(f"Fetching {path} from S3…")
         filepath = s3_bucket.download_object_to_path(path, path)
         print(f"File downloaded to: {filepath}")
     except Exception as e:
         raise Exception(f"Failed to fetch {path} from S3: {e}")
 
-@flow(log_prints=True)
+@flow
 def update_model(path: Path):
     fetch_updated_data(path)
     results = train_model(path)
