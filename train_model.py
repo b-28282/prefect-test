@@ -43,7 +43,6 @@ def fetch_updated_data(path: Path):
 
 @flow(log_prints=True)
 def update_model(path: Path):
-    path = Path("test.txt")
     fetch_updated_data(path)
     results = train_model(path)
     save_results(results)
