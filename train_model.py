@@ -43,12 +43,13 @@ def fetch_updated_data(path: Path):
     except Exception as e:
         raise Exception(f"Failed to fetch {path} from S3: {e}")
 
-@flow
+@flow(log_prints=True)
 def update_model():
-    path = Path("test.txt")
-    fetch_updated_data(path)
-    results = train_model(path)
-    save_results(results)
+    # path = Path("test.txt")
+    # fetch_updated_data(path)
+    # results = train_model(path)
+    # save_results(results)
+    print("Hello World")
 
 if __name__ == "__main__":
     flow.from_source(
