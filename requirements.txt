@@ -1,3 +1,2 @@
 prefect
 prefect-docker
-prefect_aws
