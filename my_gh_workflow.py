@@ -1,5 +1,6 @@
 import httpx
 from prefect import flow, task
+from prefect_aws import AwsCredentials
 
 
 @task(retries=2)
@@ -28,6 +29,7 @@ def repo_info(repo_owner: str = "PrefectHQ", repo_name: str = "prefect"):
     Given a GitHub repository, logs the number of stargazers
     and contributors for that repo.
     """
+    aws_credentials_block = AwsCredentials.load("ecs-secret")
     repo_info = get_repo_info(repo_owner, repo_name)
     print(f"Stars 🌠 : {repo_info['stargazers_count']}")
 
