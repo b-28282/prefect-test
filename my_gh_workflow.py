@@ -31,10 +31,10 @@ def repo_info(repo_owner: str = "PrefectHQ", repo_name: str = "prefect"):
     """
     aws_credentials_block = AwsCredentials.load("ecs-secret")
     repo_info = get_repo_info(repo_owner, repo_name)
-    print(f"Stars 🌠 : {repo_info['stargazers_count']}")
+    print(f"Estrellas 🌠 : {repo_info['stargazers_count']}")
 
     contributors = get_contributors(repo_info)
-    print(f"Number of contributors 👷: {len(contributors)}")
+    print(f"Cantidad de contribuidores 👷: {len(contributors)}")
 
 
 if __name__ == "__main__":
